@@ -1,0 +1,568 @@
+:root {
+  color-scheme: light;
+  --sky: #a9c4d3;
+  --sky-deep: #6f93ad;
+  --paper: #f1e4cc;
+  --ink: #1f2a44;
+  --thread: #ba1b1d;
+  font-family: "Special Elite", "Courier New", monospace;
+  background: var(--sky);
+  color: var(--ink);
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background:
+    linear-gradient(90deg, rgba(31, 42, 68, 0.28), transparent 18% 82%, rgba(31, 42, 68, 0.28)),
+    var(--sky);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Intro: las dos puertas para entrar con o sin música. La pieza cubre toda la
+   pantalla y, en celulares más angostos que el diseño, se recortan los costados. */
+body.intro-is-open {
+  overflow: hidden;
+}
+
+.intro {
+  position: fixed;
+  z-index: 30;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--sky);
+}
+
+.intro__stage {
+  position: relative;
+  flex: none;
+  width: min(max(100vw, calc(100vh * 941 / 1672)), 125vw);
+  width: min(max(100vw, calc(100dvh * 941 / 1672)), 125vw);
+  aspect-ratio: 941 / 1672;
+  transform-origin: var(--door-x, 50%) 56%;
+}
+
+.intro__stage > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+}
+
+.intro__door {
+  position: absolute;
+  top: 32%;
+  height: 52%;
+  padding: 0;
+  border: 0;
+  border-radius: 2vw 2vw 0 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.intro__door--music {
+  left: 7%;
+  width: 40%;
+}
+
+.intro__door--silent {
+  left: 54%;
+  width: 39%;
+}
+
+/* Un resplandor suave sobre los carteles invita a tocar las puertas. */
+.intro__door::after {
+  position: absolute;
+  top: 26%;
+  left: 8%;
+  width: 84%;
+  height: 32%;
+  content: "";
+  background: radial-gradient(ellipse at center, rgba(255, 248, 228, 0.55), transparent 65%);
+  opacity: 0;
+  animation: door-call 2.6s ease-in-out infinite;
+}
+
+.intro__door--silent::after {
+  animation-delay: 1.3s;
+}
+
+@keyframes door-call {
+  50% {
+    opacity: 1;
+  }
+}
+
+.intro__door:focus-visible {
+  outline: 3px solid var(--thread);
+  outline-offset: 2px;
+}
+
+/* Al elegir, la cámara entra por la puerta elegida y la invitación aparece detrás. */
+.intro.is-leaving {
+  pointer-events: none;
+  animation: intro-fade 0.7s ease-in 1s forwards;
+}
+
+.intro.is-leaving .intro__stage {
+  animation: intro-dive 1.7s cubic-bezier(0.55, 0, 0.3, 1) forwards;
+}
+
+.intro.is-leaving .intro__door::after {
+  animation: none;
+}
+
+@keyframes intro-dive {
+  to {
+    transform: scale(3.4);
+    filter: brightness(1.35) blur(2px);
+  }
+}
+
+@keyframes intro-fade {
+  to {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro__door::after {
+    animation: none;
+  }
+
+  .intro.is-leaving .intro__stage {
+    animation: none;
+  }
+
+  .intro.is-leaving {
+    animation-delay: 0s;
+    animation-duration: 0.25s;
+  }
+}
+
+/* Las piezas van una debajo de la otra, enteras y al ancho de la columna, así el hilo
+   rojo de cada una queda exactamente donde lo une la costura. En la compu la columna
+   toma el ancho justo para que cada pieza entre entera en el alto de la pantalla. */
+.invitation {
+  width: min(100%, calc(100vh * 941 / 1672));
+  width: min(100%, calc(100lvh * 941 / 1672));
+  margin-inline: auto;
+  overflow: clip;
+  background: var(--sky);
+  box-shadow: 0 0 46px rgba(31, 42, 68, 0.28);
+  container-type: inline-size;
+}
+
+.invitation:focus {
+  outline: none;
+}
+
+.panel {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 941 / 1672;
+  container-type: inline-size;
+}
+
+.panel > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+}
+
+/* Costura entre piezas: el fondo es el espejo de los bordes de las dos piezas
+   (sin el hilo, generado en assets/costuras), así los papeles y cuadros se continúan,
+   y el hilo rojo se dibuja de un punto al otro cuando aparece en pantalla. */
+.seam {
+  position: relative;
+  height: calc(var(--seam-height, 12) * 1cqw);
+  background: var(--seam-image) center / 100% 100% no-repeat, var(--sky);
+}
+
+.seam__thread {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.seam__thread path {
+  fill: none;
+}
+
+.seam__base {
+  stroke: var(--thread);
+  stroke-width: 0.72;
+}
+
+/* Vueltas del hilo trenzado. */
+.seam__twist {
+  stroke: #6e0c10;
+  stroke-width: 0.72;
+  stroke-dasharray: 0.28 0.62;
+  opacity: 0.55;
+}
+
+.seam__shine {
+  stroke: #f07a6c;
+  stroke-width: 0.16;
+  opacity: 0.55;
+}
+
+.seam__reveal {
+  stroke: #fff;
+  stroke-width: 3;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.seam.is-drawn .seam__reveal {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1.1s cubic-bezier(0.45, 0, 0.25, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seam__reveal {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Cuenta regresiva: los números se escriben dentro de los cuatro papelitos. */
+.countdown__value {
+  position: absolute;
+  z-index: 2;
+  width: 22%;
+  font-family: "Bodoni Moda", Didot, "Times New Roman", serif;
+  font-size: 13cqw;
+  font-weight: 500;
+  line-height: 1;
+  color: #24201c;
+  text-align: center;
+  font-variant-numeric: lining-nums tabular-nums;
+  transform: translate(-50%, -50%);
+  text-shadow: 0 0.15cqw 0 rgba(255, 255, 255, 0.35);
+}
+
+.countdown__value--days,
+.countdown__value--minutes {
+  left: 35.8%;
+}
+
+.countdown__value--hours,
+.countdown__value--seconds {
+  left: 64.7%;
+}
+
+.countdown__value--days,
+.countdown__value--hours {
+  top: 22.2%;
+}
+
+.countdown__value--minutes,
+.countdown__value--seconds {
+  top: 37.6%;
+}
+
+/* Zonas tocables sobre los botones dibujados en las piezas. */
+.hotspot {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  padding: 0;
+  border: 0;
+  border-radius: 1.6cqw;
+  background: transparent;
+  cursor: pointer;
+}
+
+.hotspot::after {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  content: "";
+  opacity: 0;
+  background: radial-gradient(ellipse at center, rgba(255, 248, 230, 0.4), transparent 70%);
+  box-shadow: 0 0 3cqw rgba(186, 27, 29, 0.25);
+  transition: opacity 0.25s ease;
+}
+
+.hotspot:hover::after,
+.hotspot:active::after {
+  opacity: 1;
+}
+
+.hotspot:focus-visible {
+  outline: 3px solid var(--thread);
+  outline-offset: 2px;
+}
+
+.hotspot[aria-disabled="true"] {
+  cursor: default;
+}
+
+.hotspot[aria-disabled="true"]::after {
+  display: none;
+}
+
+.hotspot--calendar {
+  top: 87.9%;
+  left: 23.6%;
+  width: 53.1%;
+  height: 6%;
+}
+
+.hotspot--map {
+  top: 86.1%;
+  left: 23.9%;
+  width: 52.1%;
+  height: 6.9%;
+}
+
+.hotspot--music {
+  top: 81.8%;
+  left: 24.2%;
+  width: 51.3%;
+  height: 4.8%;
+}
+
+.hotspot--bloomkeep {
+  top: 90.2%;
+  left: 11.9%;
+  width: 78.4%;
+  height: 7.6%;
+}
+
+.hotspot--gifts {
+  top: 74.5%;
+  left: 9.6%;
+  width: 71.2%;
+  height: 14%;
+}
+
+.hotspot--confirmation {
+  top: 83.6%;
+  left: 10.1%;
+  width: 79.7%;
+  height: 7.4%;
+}
+
+/* Footer. */
+.panel--footer {
+  aspect-ratio: 2172 / 724;
+}
+
+.footer-link {
+  position: absolute;
+  z-index: 2;
+  top: 69%;
+  width: 5.6%;
+  height: 16%;
+  border-radius: 50%;
+}
+
+.footer-link--whatsapp {
+  left: 40.4%;
+}
+
+.footer-link--instagram {
+  left: 47.2%;
+}
+
+.footer-link--website {
+  left: 53.9%;
+}
+
+.footer-link:focus-visible {
+  outline: 3px solid var(--thread);
+  outline-offset: 2px;
+}
+
+/* Modal de regalos: la carta se muestra entera, centrada en la pantalla. */
+.image-modal {
+  width: min(100vw, calc(100dvh * 941 / 1672));
+  max-width: none;
+  max-height: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow: visible;
+}
+
+.image-modal::backdrop {
+  background: rgba(20, 30, 48, 0.72);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+
+.image-modal[open] {
+  animation: modal-in 0.35s ease-out;
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: scale(0.94) rotate(-1.5deg);
+  }
+}
+
+.modal-art {
+  position: relative;
+  container-type: inline-size;
+}
+
+.modal-art > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+}
+
+.modal-action {
+  position: absolute;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.modal-action:focus-visible {
+  outline: 3px solid var(--paper);
+  outline-offset: 2px;
+}
+
+.modal-action--copy-alias {
+  top: 60.7%;
+  left: 15.7%;
+  width: 68.8%;
+  height: 8.8%;
+  border-radius: 2cqw;
+}
+
+.modal-action--close {
+  top: 16%;
+  left: 82.7%;
+  width: 13.5%;
+  height: 7.6%;
+  border-radius: 50%;
+}
+
+.modal-toast {
+  position: absolute;
+  top: 71%;
+  left: 50%;
+  margin: 0;
+  padding: 1.6cqw 4cqw;
+  border-radius: 1.4cqw;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 3.6cqw;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 1cqw);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.modal-toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* Botón flotante de música (aparece solo si existe assets/musica.mp3). */
+.audio-toggle {
+  position: fixed;
+  z-index: 20;
+  right: 16px;
+  bottom: 16px;
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  padding: 0;
+  border: 2px solid var(--thread);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--thread);
+  font-size: 22px;
+  box-shadow: 0 6px 18px rgba(31, 42, 68, 0.35);
+  cursor: pointer;
+}
+
+.audio-toggle[hidden] {
+  display: none;
+}
+
+.audio-toggle:hover {
+  transform: scale(1.05);
+}
+
+.audio-toggle:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.audio-toggle__note {
+  grid-area: 1 / 1;
+}
+
+/* Rayita cruzada cuando la música está pausada. */
+.audio-toggle__mute {
+  grid-area: 1 / 1;
+  width: 30px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--thread);
+  box-shadow: 0 0 0 1.5px var(--paper);
+  transform: rotate(-45deg);
+}
+
+.audio-toggle.is-playing .audio-toggle__mute {
+  display: none;
+}
+
+.audio-toggle:not(.is-playing) {
+  opacity: 0.85;
+}
+
+.audio-toggle.is-playing .audio-toggle__note {
+  animation: note-bob 1.2s ease-in-out infinite;
+}
+
+@keyframes note-bob {
+  50% {
+    transform: translateY(-3px) rotate(-8deg);
+  }
+}

@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="theme-color" content="#a9c4d3" />
+    <meta
+      name="description"
+      content="Seguí el hilo rojo hasta mis XV 🗝️ Te espero el sábado 23 de enero en Sunset Kids, Córdoba. ¡No llegues tarde!"
+    />
+    <link rel="canonical" href="https://nadulog.github.io/invitacion-Julia-Alicia-en-el-pais-de-las-maravillas/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nadulog.github.io/invitacion-Julia-Alicia-en-el-pais-de-las-maravillas/" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content="Mis XV · Julia" />
+    <meta property="og:title" content="Mis XV · Julia 🗝️" />
+    <meta
+      property="og:description"
+      content="Seguí el hilo rojo hasta mis XV 🗝️ Te espero el sábado 23 de enero en Sunset Kids, Córdoba. ¡No llegues tarde!"
+    />
+    <meta property="og:image" content="https://nadulog.github.io/invitacion-Julia-Alicia-en-el-pais-de-las-maravillas/assets/compartir-julia.jpg?v=1" />
+    <meta property="og:image:secure_url" content="https://nadulog.github.io/invitacion-Julia-Alicia-en-el-pais-de-las-maravillas/assets/compartir-julia.jpg?v=1" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Julia, mis XV. Invitación a su fiesta de 15" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mis XV · Julia 🗝️" />
+    <meta name="twitter:description" content="Seguí el hilo rojo hasta mis XV 🗝️ Te espero el sábado 23 de enero en Sunset Kids, Córdoba. ¡No llegues tarde!" />
+    <meta name="twitter:image" content="https://nadulog.github.io/invitacion-Julia-Alicia-en-el-pais-de-las-maravillas/assets/compartir-julia.jpg?v=1" />
+    <title>Mis XV · Julia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500&family=Special+Elite&display=swap"
+    />
+    <link rel="preload" as="image" href="assets/intro-puertas.webp?v=20261021-1" fetchpriority="high" />
+    <link rel="preload" as="image" href="assets/portada.webp?v=20261021-1" />
+    <link rel="stylesheet" href="styles.css?v=20261021-3" />
+  </head>
+  <body class="intro-is-open">
+    <div class="intro" role="dialog" aria-modal="true" aria-label="Bienvenida a los XV de Julia">
+      <div class="intro__stage">
+        <img
+          src="assets/intro-puertas.webp?v=20261021-1"
+          alt="Julia, mis XV. ¿Por qué puerta querés entrar?"
+          width="941"
+          height="1672"
+          fetchpriority="high"
+        />
+        <button class="intro__door intro__door--music" type="button" data-music="true">
+          <span class="sr-only">Entrar con música</span>
+        </button>
+        <button class="intro__door intro__door--silent" type="button" data-music="false">
+          <span class="sr-only">Entrar sin música</span>
+        </button>
+      </div>
+    </div>
+
+    <main id="invitationMain" class="invitation" tabindex="-1" aria-label="Invitación a los XV años de Julia">
+      <!-- Cada costura (.seam) une el hilo rojo de una pieza con el de la siguiente.
+           data-from / data-to: dónde sale y dónde entra el hilo (en % del ancho).
+           data-from-slope / data-to-slope: hacia dónde va el hilo en ese borde.
+           data-height: alto de la costura (en % del ancho). -->
+      <section class="panel panel--cover" aria-labelledby="cover-title">
+        <h1 id="cover-title" class="sr-only">Mis XV, Julia</h1>
+        <img src="assets/portada.webp?v=20261021-1" alt="Julia, mis XV" width="941" height="1672" fetchpriority="high" />
+      </section>
+
+      <div
+        class="seam"
+        data-from="42.2" data-from-slope="-0.62" data-to="27.2" data-to-slope="2.2" data-height="12"
+        style="--seam-image: url(assets/costuras/costura-1.webp?v=20261021-1)"
+      ></div>
+
+      <section class="panel panel--countdown" aria-labelledby="countdown-title">
+        <h2 id="countdown-title" class="sr-only">Falta cada vez menos</h2>
+        <img
+          src="assets/cuenta-regresiva.webp?v=20261021-1"
+          alt="Falta cada vez menos. ¡Qué reloj más divertido! ¡Dice el día del mes y no la hora!"
+          width="941"
+          height="1672"
+          loading="lazy"
+        />
+        <div class="countdown" role="timer" aria-live="off" aria-label="Tiempo restante para la fiesta">
+          <span id="days" class="countdown__value countdown__value--days">00</span>
+          <span id="hours" class="countdown__value countdown__value--hours">00</span>
+          <span id="minutes" class="countdown__value countdown__value--minutes">00</span>
+          <span id="seconds" class="countdown__value countdown__value--seconds">00</span>
+        </div>
+      </section>
+
+      <div
+        class="seam"
+        data-from="44.3" data-from-slope="0" data-to="27.8" data-to-slope="0.92" data-height="12"
+        style="--seam-image: url(assets/costuras/costura-2.webp?v=20261021-1)"
+      ></div>
+
+      <section class="panel panel--date" aria-labelledby="date-title">
+        <h2 id="date-title" class="sr-only">Fecha y hora</h2>
+        <img
+          src="assets/fecha-hora.webp?v=20261021-1"
+          alt="23 de enero, de 21:00 a 02:00 horas. ¡No llegues tarde! Recordá ser puntual"
+          width="941"
+          height="1672"
+          loading="lazy"
+        />
+        <button id="calendarButton" class="hotspot hotspot--calendar" type="button">
+          <span class="sr-only">Agregar al calendario</span>
+        </button>
+      </section>
+
+      <div
+        class="seam"
+        data-from="72.6" data-from-slope="1.22" data-to="51.1" data-to-slope="0.24" data-height="12"
+        style="--seam-image: url(assets/costuras/costura-3.webp?v=20261021-1)"
+      ></div>
+
+      <section class="panel panel--map" aria-labelledby="map-title">
+        <h2 id="map-title" class="sr-only">Cómo llegar</h2>
+        <img
+          src="assets/como-llegar.webp?v=20261021-1"
+          alt="Cómo llegar: Sunset Kids, José Roque Funes 1617, barrio Cerro, Córdoba"
+          width="941"
+          height="1672"
+          loading="lazy"
+        />
+        <a
+          class="hotspot hotspot--map"
+          href="https://www.google.com/maps/search/?api=1&amp;query=Sunset+Kids+Jos%C3%A9+Roque+Funes+1617+C%C3%B3rdoba"
+          target="_blank"
+          rel="noreferrer"
+        ><span class="sr-only">Ver ubicación</span></a>
+      </section>
+
+      <div
+        class="seam"
+        data-from="60.4" data-from-slope="0.7" data-to="51.2" data-to-slope="0.22" data-height="10"
+        style="--seam-image: url(assets/costuras/costura-4.webp?v=20261021-1)"
+      ></div>
+
+      <section class="panel panel--dress-code" aria-labelledby="dress-code-title">
+        <h2 id="dress-code-title" class="sr-only">Dress code</h2>
+        <img
+          src="assets/dress-code.webp?v=20261021-1"
+          alt="Dress code: elegante sport. Una ocasión fuera de lo común merece un look a la altura"
+          width="941"
+          height="1672"
+          loading="lazy"
+        />
+      </section>
+
+      <div
+        class="seam"
+        data-from="60.4" data-from-slope="0.72" data-to="50.3" data-to-slope="0.74" data-height="10"
+        style="--seam-image: url(assets/costuras/costura-5.webp?v=20261021-1)"
+      ></div>
+
+      <section class="panel panel--music" aria-labelledby="music-title">
+        <h2 id="music-title" class="sr-only">Música</h2>
+        <img
+          src="assets/musica.webp?v=20261021-1"
+          alt="Música. ¿Quieres, no quieres, quieres unirte al baile? Ayudanos a crear la playlist de esta noche"
+          width="941"
+          height="1672"
+          loading="lazy"
+        />
+        <a
+          class="hotspot hotspot--music"
+          href="https://open.spotify.com/playlist/5JwQsjXHm1VNcBlbgIyNUF?si=Qrsu-E8KSaSM3FUnjGv-OA&amp;utm_source=whatsapp&amp;pi=YgwIDa32QkW06&amp;pt=f12036c3b3f4916bfc4290049d821a7f"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span class="sr-only">Agregar canción</span>
+        </a>
+      </section>
+
+      <div
+        class="seam"
+        data-from="61.6" data-from-slope="0.7" data-to="53.1" data-to-slope="0.38" data-height="10"
+        style="--seam-image: url(assets/costuras/costura-6.webp?v=20261021-1)"
+      ></div>
+
+      <section class="panel panel--bloomkeep" aria-labelledby="bloomkeep-title">
+        <h2 id="bloomkeep-title" class="sr-only">BloomKeep</h2>
+        <img
+          src="assets/bloomkeep.webp?v=20261021-1"
+          alt="BloomKeep. ¿Quién eres tú? Guardemos juntos los recuerdos de esta noche. Subí tus fotos"
+          width="941"
+          height="1672"
+          loading="lazy"
+        />
+        <a class="hotspot hotspot--bloomkeep" href="https://app.bloomkeep.site/julia-15" target="_blank" rel="noreferrer">
+          <span class="sr-only">Compartir recuerdos</span>
+        </a>
+      </section>
+
+      <!-- El hilo de BloomKeep termina en la rosa: acá vuelve a salir por debajo del libro. -->
+      <div
+        class="seam"
+        data-from="90" data-from-slope="0" data-to="13.8" data-to-slope="0.32" data-height="16"
+        style="--seam-image: url(assets/costuras/costura-7.webp?v=20261021-1)"
+      ></div>
+
+      <section class="panel panel--gifts" aria-labelledby="gifts-title">
+        <h2 id="gifts-title" class="sr-only">Regalos</h2>
+        <img
+          src="assets/regalos.webp?v=20261021-1"
+          alt="Regalos. Tu presencia es mi mejor regalo. Si querés hacerme un obsequio, acá te dejo mis datos"
+          width="941"
+          height="1672"
+          loading="lazy"
+        />
+        <button id="openGiftsModal" class="hotspot hotspot--gifts" type="button">
+          <span class="sr-only">Ver datos para regalo</span>
+        </button>
+      </section>
+
+      <div
+        class="seam"
+        data-from="86" data-from-slope="0.46" data-to="35.3" data-to-slope="-0.28" data-height="16"
+        style="--seam-image: url(assets/costuras/costura-8.webp?v=20261021-1)"
+      ></div>
+
+      <section class="panel panel--confirmation" aria-labelledby="confirmation-title">
+        <h2 id="confirmation-title" class="sr-only">Confirmación de asistencia</h2>
+        <img
+          src="assets/confirmacion.webp?v=20261021-1"
+          alt="Confirmación de asistencia. ¿Contamos con vos?"
+          width="941"
+          height="1672"
+          loading="lazy"
+        />
+        <!-- Confirmación por WhatsApp a la mamá de Julia. -->
+        <a
+          id="boton-confirmar"
+          class="hotspot hotspot--confirmation"
+          href="https://wa.me/5493513972266?text=%C2%A1Hola!%20Quiero%20confirmar%20mi%20asistencia%20a%20los%20XV%20de%20Julia%20%F0%9F%97%9D%EF%B8%8F"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span class="sr-only">Confirmar asistencia</span>
+        </a>
+      </section>
+
+      <!-- El hilo sigue de largo hacia el costado y vuelve a entrar en el footer. -->
+      <div
+        class="seam"
+        data-from="80.4" data-from-slope="0.9" data-to="104" data-to-slope="1.6" data-height="10"
+        style="--seam-image: url(assets/costuras/costura-9.webp?v=20261021-1)"
+      ></div>
+
+      <footer class="panel panel--footer" aria-label="BloomDate y redes sociales">
+        <img
+          src="assets/footer-bloomdate.webp?v=20261021-1"
+          alt="Hecho con amor por BloomDate. WhatsApp, Instagram y sitio web"
+          width="2172"
+          height="724"
+          loading="lazy"
+        />
+        <a
+          class="footer-link footer-link--whatsapp"
+          href="https://wa.me/541140436324"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Contactar a BloomDate por WhatsApp"
+        ></a>
+        <a
+          class="footer-link footer-link--instagram"
+          href="https://www.instagram.com/bloomdate.invitaciones/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Ver BloomDate Invitaciones en Instagram"
+        ></a>
+        <a
+          class="footer-link footer-link--website"
+          href="https://bloomdate-site.netlify.app/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Visitar el sitio web de BloomDate"
+        ></a>
+      </footer>
+    </main>
+
+    <dialog id="giftsModal" class="image-modal" aria-label="Datos para regalo">
+      <div class="modal-art">
+        <img
+          src="assets/modal-regalos.webp?v=20261021-1"
+          alt="Datos para regalo: alias Julia.291, entidad Mercado Pago. Gracias por acompañarme"
+          width="941"
+          height="1672"
+        />
+        <button
+          class="modal-action modal-action--copy-alias"
+          type="button"
+          data-copy="Julia.291"
+          data-copy-message="Alias copiado"
+        ><span class="sr-only">Copiar alias Julia.291</span></button>
+        <button class="modal-action modal-action--close" type="button" data-close-modal>
+          <span class="sr-only">Cerrar</span>
+        </button>
+        <p class="modal-toast" aria-live="polite"></p>
+      </div>
+    </dialog>
+
+    <button
+      id="audioToggle"
+      class="audio-toggle"
+      type="button"
+      aria-label="Reproducir música"
+      aria-pressed="false"
+      hidden
+    >
+      <span class="audio-toggle__note" aria-hidden="true">♫</span>
+      <span class="audio-toggle__mute" aria-hidden="true"></span>
+    </button>
+    <audio id="invitationAudio" src="assets/musica.mp3?v=20261021-1" loop preload="metadata"></audio>
+
+    <script src="script.js?v=20261021-3"></script>
+  </body>
+</html>
