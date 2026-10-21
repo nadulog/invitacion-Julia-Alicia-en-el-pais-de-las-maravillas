@@ -60,7 +60,7 @@ function setupPieceThreads() {
           ${runs.map((d) => `<path class="thread-reveal" d="${d}" stroke-width="34" />`).join("")}
         </mask>
       </defs>
-      <image href="assets/hilo/${name}.webp?v=20261021-5" width="941" height="1672" mask="url(#thread-${name})" />`;
+      <image href="assets/hilo/${name}.webp?v=20261021-6" width="941" height="1672" mask="url(#thread-${name})" />`;
     panel.querySelector("img").after(svg);
   });
 }
@@ -91,14 +91,55 @@ function setupThreadSewing() {
     return { path, total, lengths, reach, svg: path.ownerSVGElement, shown: -1 };
   });
 
+  const invitation = document.querySelector(".invitation");
+  const sewingNeedle = document.createElement("div");
+  sewingNeedle.className = "sewing-needle";
+  sewingNeedle.setAttribute("aria-hidden", "true");
+  sewingNeedle.innerHTML = `
+    <svg viewBox="-8 -6 64 12">
+      <defs>
+        <linearGradient id="needleSteel" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#fdfdfd" />
+          <stop offset="0.45" stop-color="#c3c9cf" />
+          <stop offset="1" stop-color="#6d747b" />
+        </linearGradient>
+      </defs>
+      <path d="M-6 0C-6 -3 -4 -3.4 0 -3L50 -0.5L56 0L50 0.5L0 3C-4 3.4 -6 3 -6 0Z" fill="url(#needleSteel)" stroke="#3f454b" stroke-width="0.6" />
+      <ellipse cx="-1.6" cy="0" rx="2.6" ry="1" fill="#2b2222" />
+      <path d="M2 -1.2L46 -0.15" stroke="#fff" stroke-width="0.45" stroke-linecap="round" opacity="0.8" />
+    </svg>`;
+  invitation.append(sewingNeedle);
+
   // Posición y escala de cada SVG en la página (se recalcula si cambia el tamaño).
   function measure() {
+    const base = invitation.getBoundingClientRect();
     reveals.forEach((reveal) => {
       const rect = reveal.svg.getBoundingClientRect();
       const box = reveal.svg.viewBox.baseVal;
       reveal.top = rect.top + window.scrollY;
+      reveal.offsetTop = rect.top - base.top;
+      reveal.offsetLeft = rect.left - base.left;
       reveal.scale = rect.height / box.height;
     });
+  }
+
+  // La aguja de coser va en la punta del tramo que se está cosiendo, mirando hacia
+  // donde avanza el hilo. Si el hilo está pasando por detrás de algo, se esconde.
+  function placeNeedle() {
+    let front = null;
+    reveals.forEach((reveal) => {
+      if (reveal.shown <= 0 || reveal.shown >= reveal.total - 1) return;
+      if (!front || reveal.top > front.top) front = reveal;
+    });
+    sewingNeedle.classList.toggle("is-sewing", Boolean(front));
+    if (!front) return;
+
+    const tip = front.path.getPointAtLength(front.shown);
+    const back = front.path.getPointAtLength(Math.max(0, front.shown - 10 / front.scale));
+    const angle = Math.atan2(tip.y - back.y, tip.x - back.x) * (180 / Math.PI);
+    const x = front.offsetLeft + tip.x * front.scale;
+    const y = front.offsetTop + tip.y * front.scale;
+    sewingNeedle.style.transform = `translate(${x}px, ${y}px) rotate(${angle}deg)`;
   }
 
   function shownLength(reveal, needle) {
@@ -135,13 +176,16 @@ function setupThreadSewing() {
 
   let needle = 0;
   let frame = 0;
-  const target = () => window.scrollY + window.innerHeight * 0.72;
+  const target = () => window.scrollY + window.innerHeight * 0.55;
 
   function step() {
     const goal = target();
-    needle += (goal - needle) * 0.09;
+    // Avanza a una velocidad tope, para que se vea coser aunque se scrollee rápido.
+    const move = (goal - needle) * 0.06;
+    needle += Math.sign(move) * Math.min(Math.abs(move), window.innerHeight * 0.03);
     if (Math.abs(goal - needle) < 0.5) needle = goal;
     paint(needle);
+    placeNeedle();
     frame = needle === goal ? 0 : window.requestAnimationFrame(step);
   }
 

@@ -173,6 +173,7 @@ body.intro-is-open {
    rojo de cada una queda exactamente donde lo une la costura. En la compu la columna
    toma el ancho justo para que cada pieza entre entera en el alto de la pantalla. */
 .invitation {
+  position: relative;
   width: min(100%, calc(100vh * 941 / 1672));
   width: min(100%, calc(100lvh * 941 / 1672));
   margin-inline: auto;
@@ -245,6 +246,34 @@ body.intro-is-open {
 .thread-reveal {
   fill: none;
   stroke: #fff;
+}
+
+/* Aguja de coser en la punta del hilo (la ubica script.js). El ancla es el ojo de
+   la aguja: el SVG empieza 8 unidades antes y mide 64 de largo por 12 de alto. */
+.sewing-needle {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.sewing-needle svg {
+  position: absolute;
+  top: -2.1cqw;
+  left: -2.8cqw;
+  width: 22cqw;
+  height: 4.2cqw;
+  overflow: visible;
+  filter: drop-shadow(0.4cqw 0.6cqw 0.5cqw rgba(31, 42, 68, 0.35));
+}
+
+.sewing-needle.is-sewing {
+  opacity: 1;
 }
 
 /* Capa con solo el hilo, encima de la pieza sin hilo. */
