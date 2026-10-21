@@ -20,6 +20,7 @@ function setupSeams() {
     // Sale vertical siguiendo la dirección del hilo de arriba y entra siguiendo la del de abajo.
     const d = `M${from} 0 C${from + fromSlope * bend} ${bend} ${to - toSlope * bend} ${height - bend} ${to} ${height}`;
     seam.style.setProperty("--seam-height", height);
+    if ("noThread" in seam.dataset) return;
 
     const svg = document.createElementNS(SVG_NS, "svg");
     svg.setAttribute("class", "seam__thread");
@@ -60,7 +61,7 @@ function setupPieceThreads() {
           ${runs.map((d) => `<path class="thread-reveal" d="${d}" stroke-width="34" />`).join("")}
         </mask>
       </defs>
-      <image href="assets/hilo/${name}.webp?v=20261021-6" width="941" height="1672" mask="url(#thread-${name})" />`;
+      <image href="assets/hilo/${name}.webp?v=20261021-7" width="941" height="1672" mask="url(#thread-${name})" />`;
     panel.querySelector("img").after(svg);
   });
 }
