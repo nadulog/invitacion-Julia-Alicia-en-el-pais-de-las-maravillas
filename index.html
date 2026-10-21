@@ -39,8 +39,8 @@
       href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500&family=Special+Elite&display=swap"
     />
     <link rel="preload" as="image" href="assets/intro-puertas.webp?v=20261021-1" fetchpriority="high" />
-    <link rel="preload" as="image" href="assets/portada.webp?v=20261021-1" />
-    <link rel="stylesheet" href="styles.css?v=20261021-3" />
+    <link rel="preload" as="image" href="assets/sin-hilo/portada.webp?v=20261021-5" />
+    <link rel="stylesheet" href="styles.css?v=20261021-5" />
   </head>
   <body class="intro-is-open">
     <div class="intro" role="dialog" aria-modal="true" aria-label="Bienvenida a los XV de Julia">
@@ -66,9 +66,9 @@
            data-from / data-to: dónde sale y dónde entra el hilo (en % del ancho).
            data-from-slope / data-to-slope: hacia dónde va el hilo en ese borde.
            data-height: alto de la costura (en % del ancho). -->
-      <section class="panel panel--cover" aria-labelledby="cover-title">
+      <section class="panel panel--cover" data-thread="portada" aria-labelledby="cover-title">
         <h1 id="cover-title" class="sr-only">Mis XV, Julia</h1>
-        <img src="assets/portada.webp?v=20261021-1" alt="Julia, mis XV" width="941" height="1672" fetchpriority="high" />
+        <img src="assets/sin-hilo/portada.webp?v=20261021-5" alt="Julia, mis XV" width="941" height="1672" fetchpriority="high" />
       </section>
 
       <div
@@ -77,10 +77,10 @@
         style="--seam-image: url(assets/costuras/costura-1.webp?v=20261021-1)"
       ></div>
 
-      <section class="panel panel--countdown" aria-labelledby="countdown-title">
+      <section class="panel panel--countdown" data-thread="cuenta-regresiva" aria-labelledby="countdown-title">
         <h2 id="countdown-title" class="sr-only">Falta cada vez menos</h2>
         <img
-          src="assets/cuenta-regresiva.webp?v=20261021-1"
+          src="assets/sin-hilo/cuenta-regresiva.webp?v=20261021-5"
           alt="Falta cada vez menos. ¡Qué reloj más divertido! ¡Dice el día del mes y no la hora!"
           width="941"
           height="1672"
@@ -100,10 +100,10 @@
         style="--seam-image: url(assets/costuras/costura-2.webp?v=20261021-1)"
       ></div>
 
-      <section class="panel panel--date" aria-labelledby="date-title">
+      <section class="panel panel--date" data-thread="fecha-hora" aria-labelledby="date-title">
         <h2 id="date-title" class="sr-only">Fecha y hora</h2>
         <img
-          src="assets/fecha-hora.webp?v=20261021-1"
+          src="assets/sin-hilo/fecha-hora.webp?v=20261021-5"
           alt="23 de enero, de 21:00 a 02:00 horas. ¡No llegues tarde! Recordá ser puntual"
           width="941"
           height="1672"
@@ -120,10 +120,10 @@
         style="--seam-image: url(assets/costuras/costura-3.webp?v=20261021-1)"
       ></div>
 
-      <section class="panel panel--map" aria-labelledby="map-title">
+      <section class="panel panel--map" data-thread="como-llegar" aria-labelledby="map-title">
         <h2 id="map-title" class="sr-only">Cómo llegar</h2>
         <img
-          src="assets/como-llegar.webp?v=20261021-1"
+          src="assets/sin-hilo/como-llegar.webp?v=20261021-5"
           alt="Cómo llegar: Sunset Kids, José Roque Funes 1617, barrio Cerro, Córdoba"
           width="941"
           height="1672"
@@ -143,10 +143,10 @@
         style="--seam-image: url(assets/costuras/costura-4.webp?v=20261021-1)"
       ></div>
 
-      <section class="panel panel--dress-code" aria-labelledby="dress-code-title">
+      <section class="panel panel--dress-code" data-thread="dress-code" aria-labelledby="dress-code-title">
         <h2 id="dress-code-title" class="sr-only">Dress code</h2>
         <img
-          src="assets/dress-code.webp?v=20261021-1"
+          src="assets/sin-hilo/dress-code.webp?v=20261021-5"
           alt="Dress code: elegante sport. Una ocasión fuera de lo común merece un look a la altura"
           width="941"
           height="1672"
@@ -160,10 +160,10 @@
         style="--seam-image: url(assets/costuras/costura-5.webp?v=20261021-1)"
       ></div>
 
-      <section class="panel panel--music" aria-labelledby="music-title">
+      <section class="panel panel--music" data-thread="musica" aria-labelledby="music-title">
         <h2 id="music-title" class="sr-only">Música</h2>
         <img
-          src="assets/musica.webp?v=20261021-1"
+          src="assets/sin-hilo/musica.webp?v=20261021-5"
           alt="Música. ¿Quieres, no quieres, quieres unirte al baile? Ayudanos a crear la playlist de esta noche"
           width="941"
           height="1672"
@@ -185,10 +185,10 @@
         style="--seam-image: url(assets/costuras/costura-6.webp?v=20261021-1)"
       ></div>
 
-      <section class="panel panel--bloomkeep" aria-labelledby="bloomkeep-title">
+      <section class="panel panel--bloomkeep" data-thread="bloomkeep" aria-labelledby="bloomkeep-title">
         <h2 id="bloomkeep-title" class="sr-only">BloomKeep</h2>
         <img
-          src="assets/bloomkeep.webp?v=20261021-1"
+          src="assets/sin-hilo/bloomkeep.webp?v=20261021-5"
           alt="BloomKeep. ¿Quién eres tú? Guardemos juntos los recuerdos de esta noche. Subí tus fotos"
           width="941"
           height="1672"
@@ -206,10 +206,10 @@
         style="--seam-image: url(assets/costuras/costura-7.webp?v=20261021-1)"
       ></div>
 
-      <section class="panel panel--gifts" aria-labelledby="gifts-title">
+      <section class="panel panel--gifts" data-thread="regalos" aria-labelledby="gifts-title">
         <h2 id="gifts-title" class="sr-only">Regalos</h2>
         <img
-          src="assets/regalos.webp?v=20261021-1"
+          src="assets/sin-hilo/regalos.webp?v=20261021-5"
           alt="Regalos. Tu presencia es mi mejor regalo. Si querés hacerme un obsequio, acá te dejo mis datos"
           width="941"
           height="1672"
@@ -226,10 +226,10 @@
         style="--seam-image: url(assets/costuras/costura-8.webp?v=20261021-1)"
       ></div>
 
-      <section class="panel panel--confirmation" aria-labelledby="confirmation-title">
+      <section class="panel panel--confirmation" data-thread="confirmacion" aria-labelledby="confirmation-title">
         <h2 id="confirmation-title" class="sr-only">Confirmación de asistencia</h2>
         <img
-          src="assets/confirmacion.webp?v=20261021-1"
+          src="assets/sin-hilo/confirmacion.webp?v=20261021-5"
           alt="Confirmación de asistencia. ¿Contamos con vos?"
           width="941"
           height="1672"
@@ -320,6 +320,7 @@
     </button>
     <audio id="invitationAudio" src="assets/musica.mp3?v=20261021-1" loop preload="metadata"></audio>
 
-    <script src="script.js?v=20261021-3"></script>
+    <script src="hilo.js?v=20261021-5"></script>
+    <script src="script.js?v=20261021-5"></script>
   </body>
 </html>
