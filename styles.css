@@ -505,6 +505,28 @@ body.intro-is-open {
   border-radius: 50%;
 }
 
+/* Monto sugerido, entre la entidad y el botón de copiar alias. */
+.gift-suggestion {
+  position: absolute;
+  top: 59%;
+  left: 8%;
+  width: 84%;
+  margin: 0;
+  font-family: "Bodoni Moda", Didot, "Times New Roman", serif;
+  font-size: 4.2cqw;
+  font-style: italic;
+  line-height: 1.2;
+  color: var(--ink);
+  text-align: center;
+  transform: translateY(-50%);
+}
+
+.gift-suggestion strong {
+  font-style: normal;
+  font-weight: 500;
+  color: #a3191c;
+}
+
 .modal-toast {
   position: absolute;
   top: 71%;
