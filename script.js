@@ -61,7 +61,7 @@ function setupPieceThreads() {
           ${runs.map((d) => `<path class="thread-reveal" d="${d}" stroke-width="34" />`).join("")}
         </mask>
       </defs>
-      <image href="assets/hilo/${name}.webp?v=20261021-8" width="941" height="1672" mask="url(#thread-${name})" />`;
+      <image href="assets/hilo/${name}.webp?v=20261021-9" width="941" height="1672" mask="url(#thread-${name})" />`;
     panel.querySelector("img").after(svg);
   });
 }

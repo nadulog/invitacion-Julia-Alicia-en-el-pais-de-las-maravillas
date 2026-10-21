@@ -513,9 +513,10 @@ body.intro-is-open {
   width: 84%;
   margin: 0;
   font-family: "Bodoni Moda", Didot, "Times New Roman", serif;
-  font-size: 4.2cqw;
+  font-size: 3.15cqw;
   font-style: italic;
   line-height: 1.2;
+  white-space: nowrap;
   color: var(--ink);
   text-align: center;
   transform: translateY(-50%);
@@ -536,7 +537,7 @@ body.intro-is-open {
   border-radius: 1.4cqw;
   background: var(--ink);
   color: var(--paper);
-  font-size: 3.6cqw;
+  font-size: 3.15cqw;
   letter-spacing: 0.08em;
   white-space: nowrap;
   opacity: 0;
